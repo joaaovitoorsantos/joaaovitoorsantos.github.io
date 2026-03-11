@@ -13,7 +13,7 @@ const techStack = [
   { name: "TypeScript", icon: FileCode },
   { name: "React Native", icon: Smartphone },
   { name: "Node.js", icon: Server },
-  { name: "PHP", icon: Database },
+  { name: "Github", icon: Database },
 ];
 
 const Typewriter = () => {
@@ -59,28 +59,25 @@ const Hero = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Dot grid background */}
       <div className="absolute inset-0 dot-grid opacity-40" />
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/50 to-background" />
 
       <div className="section-container relative z-10 flex flex-col items-center text-center py-20">
-        {/* Profile photo */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8 }}
           className="mb-8"
         >
-          <div className="w-28 h-28 rounded-full border-2 border-foreground/30 overflow-hidden animate-pulse-glow">
+          <div className="w-36 h-36 rounded-full border-2 border-foreground/30 overflow-hidden animate-pulse-glow">
             <img
-              src="/images/profile.jpg"
+              src="/images/profile.png"
               alt="João Vitor dos Santos"
               className="w-full h-full object-cover"
             />
           </div>
         </motion.div>
 
-        {/* Name */}
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -90,7 +87,6 @@ const Hero = () => {
           João Vitor dos Santos
         </motion.h1>
 
-        {/* Typewriter */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -100,7 +96,6 @@ const Hero = () => {
           <Typewriter />
         </motion.div>
 
-        {/* Bio */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -111,7 +106,6 @@ const Hero = () => {
           da ideia ao produto final. Atuo com Next.js, TypeScript, React Native e tecnologias modernas.
         </motion.p>
 
-        {/* CTAs */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -132,7 +126,6 @@ const Hero = () => {
           </button>
         </motion.div>
 
-        {/* Tech stack */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -150,7 +143,6 @@ const Hero = () => {
           ))}
         </motion.div>
 
-        {/* Scroll indicator */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
