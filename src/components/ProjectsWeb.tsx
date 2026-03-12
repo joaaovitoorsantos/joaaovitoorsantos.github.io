@@ -10,8 +10,9 @@ const projects = [
   { name: "ClubHub", desc: "Plataforma de streaming para influenciadores", img: "/images/clubhub.png", tags: ["React", "Node.js"] },
   { name: "Anglo Vestibulinho", desc: "Plataforma de inscrição em React", img: "/images/anglo.png", tags: ["React", "TypeScript"] },
   { name: "VEI Dashboard", desc: "Dashboard de gestão de vistorias internas", img: "/images/vei-dashboard.png", tags: ["Next.js", "TypeScript", "Prisma"] },
-  { name: "HappyMobi", desc: "Website institucional", img: "/images/happymobi.jpeg", tags: ["Next.js", "TypeScript", "PWA"] },
-  { name: "VConecta", desc: "Landing page institucional em HTML e CSS", img: "/images/vconecta.jpeg", tags: ["HTML", "CSS"] },
+  { name: "HappyMobi", desc: "Website institucional", img: "/images/happymobi.png", tags: ["Next.js", "TypeScript", "PWA"] },
+  { name: "VConecta", desc: "Landing page institucional em HTML e CSS", img: "/images/vconecta.png", tags: ["HTML", "CSS"] },
+  { name: "Vou Car Sharing", desc: "Plataforma de car sharing em Next.js", img: "/images/voucar.png", tags: ["Next.js", "TypeScript"] },
 ];
 
 const TiltCard = ({ project, onOpen }: { project: typeof projects[0]; onOpen?: (p: typeof projects[0]) => void }) => {
@@ -33,13 +34,13 @@ const TiltCard = ({ project, onOpen }: { project: typeof projects[0]; onOpen?: (
       onMouseMove={handleMouse}
       onMouseLeave={() => setTransform("")}
       style={{ transform, transition: "transform 0.15s ease-out" }}
-      className="group glass-card-hover overflow-hidden"
+      // className="group glass-card-hover overflow-hidden"
     >
       {/* Image */}
       <div className="relative aspect-video overflow-hidden">
         <img src={project.img} alt={project.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
         <div className="absolute inset-0 bg-background/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-          <button onClick={() => onOpen?.(project)} className="flex items-center gap-2 px-4 py-2 bg-foreground text-background text-sm font-medium rounded-lg">
+          <button onClick={() => onOpen?.(project)} className="flexitems-center gap-2 px-4 py-2 bg-foreground text-background text-sm font-medium rounded-lg">
             <ExternalLink size={14} /> Ver Projeto
           </button>
         </div>

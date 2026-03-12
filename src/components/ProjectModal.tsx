@@ -39,41 +39,50 @@ export default function ProjectModal({ open, project, onClose }: Props) {
         className="absolute inset-0 bg-black/70 backdrop-blur-sm"
       />
 
-      {/* Animated content: responsive size, padding and max dimensions to avoid filling entire mobile screen */}
       <motion.div
         initial={{ opacity: 0, scale: 0.98 }}
         animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0, scale: 0.98 }}
         transition={{ duration: 0.28 }}
-        className={"relative bg-transparent w-[95vw] h-[90vh] md:w-[85vw] md:h-[90vh] max-w-[1200px] max-h-[96vh] p-4 md:p-6 rounded-md md:rounded-lg overflow-hidden"}
+        className="relative w-[95vw] h-[90vh] md:w-[85vw] md:h-[90vh] max-w-[1200px] max-h-[96vh] p-0"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Close button top-right: use dark solid bg so it remains visible on white images */}
-        <button
-          onClick={onClose}
-          aria-label="Fechar"
-          className="absolute right-4 top-4 z-50 p-2 rounded-md bg-black/80 backdrop-blur-md border border-white/30 text-white shadow-lg hover:bg-black/75"
-          style={{ textShadow: "0 1px 2px rgba(0,0,0,0.6)" }}
-        >
-          <X className="w-5 h-5" />
-        </button>
+        <div className="relative h-full w-full rounded-3xl bg-[#050505] group glass-card-hover text-white px-5 py-6 md:px-8 md:py-8 overflow-hidden">
+          <button
+            onClick={onClose}
+            aria-label="Fechar"
+            className="absolute top-5 right-5 z-50 p-2 rounded-full bg-white/10 text-white border border-white/20 hover:bg-white/20 transition-colors"
+          >
+            <X className="w-5 h-5" />
+          </button>
 
-        {/* Header: dark background to remain visible on any project image */}
-        <header className="absolute left-4 top-4 z-40 text-white rounded-md px-3 py-2 bg-black/80 backdrop-blur-md border border-white/30" style={{ textShadow: "0 1px 2px rgba(0,0,0,0.6)" }}>
-          <h3 className="text-lg font-semibold">{project.name}</h3>
-          <div className="mt-2 flex flex-wrap gap-2">
-            {project.tags.map((t) => (
-              <span key={t} className="text-xs px-2 py-1 rounded-md bg-black/60 border border-white/20 text-white">{t}</span>
-            ))}
-          </div>
-        </header>
+          <div className="flex flex-col h-full gap-6">
+            <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 pr-10">
+              <div className="text-left">
+                <h3 className="text-2xl font-semibold leading-tight">{project.name}</h3>
+                {project.desc && (
+                  <p className="mt-2 text-sm text-white/70 max-w-2xl leading-relaxed">{project.desc}</p>
+                )}
+              </div>
+              <div className="flex flex-wrap gap-2 justify-start">
+                {project.tags.map((t) => (
+                  <span
+                    key={t}
+                    className="text-xs uppercase tracking-wide px-3 py-1 rounded-full bg-white/10 border border-white/20"
+                  >
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </div>
 
-        {/* Main area - ImageZoom: keep the ImageZoom unchanged and allow it to occupy the inner area; add a wrapper to ensure it doesn't collide with header/button */}
-        <main className="w-full h-full pt-0">
-          <div className="w-full h-full rounded-sm overflow-hidden">
-            <ImageZoom src={project.img} alt={project.name} />
+            <div className="flex-1 flex items-center justify-center rounded-2xl  p-3">
+              <div className="w-full h-full rounded-2xl overflow-hidden ">
+                <ImageZoom src={project.img} alt={project.name} />
+              </div>
+            </div>
           </div>
-        </main>
+        </div>
       </motion.div>
     </div>
   );

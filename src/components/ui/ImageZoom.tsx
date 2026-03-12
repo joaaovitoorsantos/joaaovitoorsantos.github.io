@@ -39,7 +39,7 @@ export default function ImageZoom({ src, alt = "Preview", min = 0.5, max = 2 }: 
   return (
     <div className="relative w-full h-full bg-transparent flex flex-col">
       {/* Controls */}
-      <div className="absolute z-40 left-1/2 -translate-x-1/2 top-6 flex items-center gap-2 backdrop-blur-sm bg-white/10 border border-white/20 text-white rounded-md px-2 py-1">
+      <div className="absolute z-40 left-1/2 -translate-x-1/2 bottom-6 flex items-center gap-2 backdrop-blur-sm bg-white/10 border border-white/20 text-white rounded-md px-2 py-1">
         <button
           aria-label="Zoom out"
           onClick={() => change(-0.1)}
@@ -68,18 +68,16 @@ export default function ImageZoom({ src, alt = "Preview", min = 0.5, max = 2 }: 
       <div
         ref={containerRef}
         onWheel={onWheel}
-        className="w-full h-full overflow-y-auto overflow-x-hidden touch-auto"
+        className="w-full h-full overflow-auto touch-auto flex items-center justify-center"
         style={{ WebkitOverflowScrolling: "touch" }}
       >
-        <div className="w-full flex justify-center">
-          <img
-            src={src}
-            alt={alt}
-            draggable={false}
-            style={{ transform: `scale(${zoom})`, transformOrigin: "top center", cursor: zoom < max ? "zoom-in" : "zoom-out" }}
-            className="w-full max-w-none object-contain select-none"
-          />
-        </div>
+        <img
+          src={src}
+          alt={alt}
+          draggable={false}
+          style={{ transform: `scale(${zoom})`, transformOrigin: "center", cursor: zoom < max ? "zoom-in" : "zoom-out" }}
+          className="max-w-full max-h-full object-contain select-none"
+        />
       </div>
 
       {/* Scrollbar styling for dark theme (Webkit) */}

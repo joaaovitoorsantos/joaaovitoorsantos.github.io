@@ -2,9 +2,10 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
 const mobileProjects = [
-  { name: "VEI", desc: "Aplicativo de vistorias internas", img: "/images/vei-app.jpeg" },
-  { name: "Let's Vou", desc: "Aplicativo de locação de veículos", img: "/images/letsvou-app.png" },
-  { name: "HappyMobi", desc: "PWA para gestão de aluguel de scooters na praia", img: "/images/happymobi-app.png" },
+  { name: "VEI", desc: "Aplicativo de\nvistorias internas", img: "/images/vei-app.png" },
+  { name: "Let's Vou", desc: "Aplicativo de\nlocação de veículos", img: "/images/letsvou-app.png" },
+  { name: "HappyMobi", desc: "PWA para gestão\nde aluguel de scooters", img: "/images/happymobi-app.png" },
+  // { name: "Vestibulinho Anglo", desc: "Aplicativo de inscrição para vestibulares", img: "/images/anglo-app.png" },
 ];
 
 const PhoneMockup = ({ project }: { project: typeof mobileProjects[0] }) => (
@@ -24,7 +25,13 @@ const PhoneMockup = ({ project }: { project: typeof mobileProjects[0] }) => (
     </div>
     <div className="text-center">
       <h3 className="text-foreground font-semibold text-lg">{project.name}</h3>
-      <p className="text-sm text-muted-foreground mt-1">{project.desc}</p>
+      <p className="text-sm text-muted-foreground mt-1 leading-relaxed">
+        {project.desc.split("\n").map((line, idx) => (
+          <span key={`${project.name}-line-${idx}`} className="block">
+            {line}
+          </span>
+        ))}
+      </p>
     </div>
   </div>
 );
@@ -47,7 +54,7 @@ const ProjectsMobile = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-foreground">Projetos Mobile</h2>
         </motion.div>
 
-        <div className="flex flex-wrap justify-center gap-12 md:gap-16">
+        <div className="flex flex-wrap justify-center space-x-16">
           {mobileProjects.map((p, i) => (
             <motion.div
               key={p.name}
